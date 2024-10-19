@@ -1,0 +1,113 @@
+.main-container{
+    min-height: 100vh;
+    width: 100vw;
+    background-color: rgb(24, 23, 23);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.main-container nav{
+    display: flex;
+    justify-content: space-between;
+    padding: 28px 22px;
+}
+
+
+.main-container nav .main-heading{
+    font-size: 22px;
+}
+
+.main-container nav .profile-icon{
+    margin-top: -5px;
+    width: 42px;
+    height: 42px;
+    border-radius:50%;
+    background-color: rgb(59, 59, 59);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.main-container .content-part{
+    overflow-y: scroll;
+    padding: 40px 115px 0 110px;
+    flex-grow: 1;
+}
+
+.main-container .content-part::-webkit-scrollbar{
+    display: none;
+}
+
+.main-container .content-part .user-icon{
+    display: flex;
+    gap: 20px;
+    margin-left: -55px;
+}
+
+.main-container .content-part .user-icon .icon{
+    width: 42px;
+    height: 42px;
+    border-radius:50%;
+    background-color: rgb(59, 59, 59);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    top: -10px;
+}
+
+.main-container .content-part .main-content{
+    margin-top: 30px;
+    margin-left: 8px;
+}
+
+.main-container .content-part .main-content p{
+    line-height: 60px;
+}
+
+.main-container .bottom-part{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.main-container .bottom-part .input-container{
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+.main-container .bottom-part .input-container .input-box{
+  padding: 18px 20px;  
+  margin:0 44px;  
+  display: flex;
+  justify-content: space-between;
+  background-color:rgb(240,244,249);
+  border-radius: 40px;
+}
+
+.main-container .bottom-part .input-box input{
+   width: 83%; 
+   border: none;
+   font-size: 17px;
+   margin-left: 10px;
+   background-color:rgb(240,244,249);
+}
+
+.main-container .bottom-part .input-box .send-icon{
+    margin-right: 0px;
+    color: black;
+    width: 25px;
+}
+
+.main-container .bottom-part .input-box input:focus{
+   border: none;
+   outline: none;
+}
+
+.main-container .bottom-part .mistake-warning{
+    margin-bottom: 11px;
+    font-size: 13px;
+}

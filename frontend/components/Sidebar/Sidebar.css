@@ -1,0 +1,83 @@
+.sidebar-container{
+    padding: 0 16px;
+    min-height: 100vh;
+    background-color:rgb(240,244,249);
+    display:inline-flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.sidebar-container .part1{
+    margin-top: 20px;
+}
+
+.sidebar-container .part1 .menu-bar-icon {
+  width: 40px;
+  height: 40px;
+  font-size: 20px;
+  border-radius: 50%;
+}
+
+.sidebar-container .part1 .menu-bar-icon:active{
+  transform: scale(0.96);
+}
+
+.sidebar-container .part1 .menu-bar-icon:hover{
+  background-color: rgb(221,227,234);
+}
+
+
+.sidebar-container .part1 .menu-bar-icon ,.part1 .plus-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.sidebar-container .part1 .plus-icon{
+  margin-top: 48px;
+  font-size: 17px;
+  background-color: rgb(221,227,234);
+  color: rgb(135, 135, 135);
+  display: flex;
+  gap: 20px;
+  padding: 13px 15px;
+  border-radius: 50px;
+}
+.sidebar-container .part1 .plus-icon p{
+  font-size: 15px;
+}
+
+.sidebar-container .part1 .recent-section{
+  margin-top: 27px;
+  font-size: 17px;
+}
+
+.sidebar-container .part2{
+  margin-bottom: 40px;
+  display:flex;
+  flex-direction: column;
+  gap: 20px;
+  font-size: 17px;
+}
+
+.sidebar-container .part2 .question-icon , .history-icon , .settion-icon{
+   display: flex;
+   gap: 15px;
+   border-radius: 50%;
+   transition: all 0.2s linear;
+}
+
+.sidebar-container .part2 .question-icon:hover , .history-icon:hover ,.settion-icon:hover {
+  display: flex;
+  gap: 18px;
+  padding: 12px 12px;
+  border-radius: 50px;
+  background-color: rgb(221,227,234);
+}
+
+.sidebar-container .part2 p{
+  padding-right:10px;
+  position: relative;
+  top: -3px;
+}
+
