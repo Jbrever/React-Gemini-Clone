@@ -1,13 +1,14 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import './Sidebar.css'
 import { assets } from "../../src/assets/assets";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faQuestionCircle } from '@fortawesome/free-regular-svg-icons'
-import { faBars, faGear, faHistory, faPlus } from '@fortawesome/free-solid-svg-icons'
-
+import { faBars, faGear, faHistory, faPlus, faRightFromBracket } from '@fortawesome/free-solid-svg-icons'
+import { geminiContext } from "../../context/GeminiContext";
 function Sidebar(){
   const [isExtended , setIsExtended] = useState(false);
-    return(
+ 
+  return(
         <div className="sidebar-container">
           <div className="part1">
              <div className="menu-bar-icon" onClick={()=>setIsExtended(pre=>!pre)}>
@@ -45,7 +46,13 @@ function Sidebar(){
                 isExtended ? <p>Setting</p>: null
                }
              </div>
-          </div> 
+             <div className="logout-icon">
+               <FontAwesomeIcon icon={faRightFromBracket}/>
+               {
+                isExtended ? <p>Log out</p>: null
+               }
+             </div>
+          </div>
         </div>
     )
 }

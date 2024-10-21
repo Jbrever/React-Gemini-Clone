@@ -1,8 +1,8 @@
 .main-container{
     min-height: 100vh;
     width: 100vw;
-    background-color: rgb(24, 23, 23);
-    color: white;
+    background-color: rgb(43, 43, 43);
+    color: rgb(255, 255, 255);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -13,7 +13,6 @@
     justify-content: space-between;
     padding: 28px 22px;
 }
-
 
 .main-container nav .main-heading{
     font-size: 22px;
@@ -28,58 +27,175 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    background-image: url('https://img.freepik.com/premium-photo/retrostyled-robot-with-large-eyes-sits-desk-with-its-hands-surface_885831-146485.jpg');
+    background-position: center;
+    background-size: cover;
 }
-
 .main-container .content-part{
+    /* width: 60%; */
+    width: 100%;
     overflow-y: scroll;
     padding: 40px 115px 0 110px;
+    margin: 0 auto;
     flex-grow: 1;
+    display: flex;
+    justify-content: center;
 }
 
 .main-container .content-part::-webkit-scrollbar{
     display: none;
 }
-
-.main-container .content-part .user-icon{
+.main-container .content-part .after-query{ 
+  padding: 0 25%;
+  flex-grow: 1;
+}
+.main-container .content-part .after-query .user-icon{
     display: flex;
     gap: 20px;
     margin-left: -55px;
 }
 
-.main-container .content-part .user-icon .icon{
+.main-container .content-part .after-query .user-icon .icon{
     width: 42px;
     height: 42px;
     border-radius:50%;
-    background-color: rgb(59, 59, 59);
+    background-color: rgb(105, 104, 104);
     display: flex;
     align-items: center;
     justify-content: center;
     position: relative;
     top: -10px;
+    background-image: url('https://img.freepik.com/premium-photo/retrostyled-robot-with-large-eyes-sits-desk-with-its-hands-surface_885831-146485.jpg');
+    background-position: center;
+    background-size: cover;
 }
 
-.main-container .content-part .main-content{
-    margin-top: 30px;
-    margin-left: 8px;
+.main-container .content-part .after-query .main-content{
+    margin-top: 20px;
+    display: flex;
+    gap:15px;
 }
 
-.main-container .content-part .main-content p{
-    line-height: 60px;
+.main-container .content-part .after-query .main-content .gemini-icon{
+    margin-left: -55px;
+}
+    
+.main-container .content-part .after-query .main-content .gemini-icon img{
+        width: 50px;
+    }
+    
+.main-container .content-part .after-query .main-content .gemini-icon .animate-active{
+    animation: gemini-move 3s ease-in-out alternate infinite ;
+}
+
+.main-container .content-part .after-query .main-content .loader-containr{
+    width: 100%;
+}
+
+@keyframes gemini-move{
+    0%{
+        transform: translateY(0);
+       }
+    50%{
+        transform: translateY(50px);          
+       }
+    100%{
+        transform: translateY(0);   
+    }   
+}
+
+.main-container .content-part .after-query .main-content .loader-containr .loader-animation{
+    height: 20px;
+    margin-bottom: 10px;
+    background:linear-gradient(to right,rgb(139, 200, 247),rgb(255, 255, 255) , rgb(139, 200, 247));
+    border-radius:5px;
+    animation: loaderAnimation 2s infinite linear;
+}
+
+@keyframes loaderAnimation{
+    0%{
+        background-position: -900px;
+    }
+    100%{
+        background-position:900px;
+    }   
+}
+
+
+.main-container .content-part .after-query .main-content .ai-reply{
+    margin-top: 5px;
+    line-height: 35px;
+    font-size: 17px;
+}
+
+.main-container .content-part .before-query{
+    height: 70vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    margin: 0  -10px;
+    margin-top: -70px;
+    align-self: flex-start;
+}
+.main-container .content-part .before-query .texts{
+  margin-top: 45px;
+}
+.main-container .content-part .before-query .texts .user-name,.before-query .texts .heading{
+    font-size: 25px;
+}
+.main-container .content-part .before-query .cards-container{
+ display: flex;
+ flex-wrap: wrap;
+ justify-content: center;
+ gap: 20px;
+ margin-bottom: 95px;
+}
+
+.main-container .content-part .before-query .card{
+   width: 200px;
+   height: 200px;
+   display: flex;
+   flex-direction: column;
+   justify-content: space-between;
+   background-color:rgb(240,244,249);
+   border-radius: 10px;
+   color: black;
+   padding: 15px 15px;
+   cursor:pointer;
+}
+
+.main-container .content-part .before-query .card:active{
+    transform: scale(0.98);
+}
+
+.main-container .content-part .before-query .card .icon{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(229, 229, 229);
+    color: rgb(82, 82, 82);
+    align-self: flex-end;
 }
 
 .main-container .bottom-part{
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .main-container .bottom-part .input-container{
     width: 100%;
-    margin-bottom: 15px;
+    margin: 25px 0 15px 0;
+    display: flex;
+    justify-content: center;
 }
 
 .main-container .bottom-part .input-container .input-box{
+  width: 100%;  
   padding: 18px 20px;  
   margin:0 44px;  
   display: flex;
@@ -89,25 +205,166 @@
 }
 
 .main-container .bottom-part .input-box input{
-   width: 83%; 
-   border: none;
-   font-size: 17px;
-   margin-left: 10px;
-   background-color:rgb(240,244,249);
+    width: 83%; 
+    border: none;
+    font-size: 17px;
+    margin-left: 10px;
+    background-color:rgb(240,244,249);
+}
+
+.main-container .bottom-part .input-box input:focus{
+    border: none;
+    outline: none;
 }
 
 .main-container .bottom-part .input-box .send-icon{
     margin-right: 0px;
     color: black;
     width: 25px;
+    cursor:pointer;
 }
 
-.main-container .bottom-part .input-box input:focus{
-   border: none;
-   outline: none;
+.main-container .bottom-part .input-box .pause-icon{
+    color: rgb(0, 0, 0);
+    font-size: 25px
+}
+
+.main-container .bottom-part .input-box .send-icon:active , .pause-icon:active{
+    transform: scale(0.90);
 }
 
 .main-container .bottom-part .mistake-warning{
     margin-bottom: 11px;
     font-size: 13px;
+}
+
+@media (min-width:1000px){
+    .main-container .bottom-part .input-container .input-box{
+        width: 50%;
+    }
+}
+
+
+
+@media (max-width:1200px){
+    .main-container .bottom-part .input-container .input-box{
+        width: 80%;
+    }
+    .main-container .content-part .after-query{
+        padding: 0 4%;
+    }
+    .main-container .content-part .before-query .card{
+       width: 190px;
+       height: 190px;
+    }
+}
+
+@media (max-width:1110px){
+    .main-container .content-part .before-query .card{
+        width: 170px;
+        height: 170px;
+     }
+}
+
+@media (max-width:1030px){
+    .main-container .content-part .before-query .card{
+        width: 140px;
+        height: 140px;
+     }
+     .main-container .content-part .before-query .card .icon{
+        width: 25px;
+        height: 25px;
+        font-size: 14px;
+     }    
+}
+
+@media (max-width:1030px){
+    .main-container .content-part .before-query .texts .user-name,.before-query .texts .heading{
+        font-size: 20px;
+    }
+    .main-container .content-part .before-query .card{
+        width: 120px;
+        height: 120px;
+        font-size: 12px;
+     }
+     .main-container .content-part .before-query .card .icon{
+        width: 25px;
+        height: 25px;
+        font-size: 14px;
+     }    
+}
+
+@media (max-width:830px){
+    .main-container .content-part .before-query .texts .user-name,.before-query .texts .heading{
+        font-size: 15px;
+    }
+    .main-container .content-part .before-query .card{
+       margin-left: -10px;
+    }
+}
+
+@media (max-width:785px){
+    .main-container .content-part .before-query .texts .user-name,.before-query .texts .heading{
+        font-size: 15px;
+    }
+    .main-container .content-part .before-query{
+       margin-left: -20px;
+       gap: 30px;
+    }
+    .main-container .content-part .before-query .card{
+      width: 170px;
+      height: 170px;
+      font-size: 15px;
+    }
+}
+
+@media (max-width:700px){
+    .main-container .content-part{
+        width: 100%;
+        padding: 40px 45px 0 80px;
+    }
+}
+
+@media (max-width:585px){
+    .main-container .content-part .before-query .texts .user-name,.before-query .texts .heading{
+        font-size: 13px;
+    }
+    .main-container .content-part .before-query{
+       margin-left: -0px;
+       gap: 60px;
+    }
+    .main-container .content-part .before-query .card{
+      width: 150px;
+      height: 150px;
+    }
+    .main-container .bottom-part .mistake-warning{
+      font-size: 10px;
+    }    
+}
+
+@media (max-width:500px){
+    .main-container .content-part .before-query .texts .user-name,.before-query .texts .heading{
+        font-size: 10px;
+    }
+
+    .main-container .content-part .before-query{
+        margin-left: -0px;
+        gap: 100px;
+     }
+
+    .main-container .content-part .before-query .card{
+        width: 140px;
+        height: 140px;
+    }
+    .main-container .bottom-part .input-container .input-box{
+        padding:13px 20px;
+        margin: 0 0;
+    }
+}
+
+
+@media (max-width:400px){
+    .main-container .content-part .after-query .main-content .ai-reply{
+        font-size: 14px;
+    }
 }

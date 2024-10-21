@@ -17,6 +17,8 @@
   height: 40px;
   font-size: 20px;
   border-radius: 50%;
+  cursor:pointer;
+
 }
 
 .sidebar-container .part1 .menu-bar-icon:active{
@@ -32,6 +34,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  cursor:pointer;
 }
 .sidebar-container .part1 .plus-icon{
   margin-top: 48px;
@@ -60,14 +63,16 @@
   font-size: 17px;
 }
 
-.sidebar-container .part2 .question-icon , .history-icon , .settion-icon{
+.sidebar-container .part2 .question-icon , .history-icon , .settion-icon,.logout-icon{
    display: flex;
    gap: 15px;
    border-radius: 50%;
    transition: all 0.2s linear;
+   cursor:pointer;
+
 }
 
-.sidebar-container .part2 .question-icon:hover , .history-icon:hover ,.settion-icon:hover {
+.sidebar-container .part2 .question-icon:hover , .history-icon:hover ,.settion-icon:hover , .logout-icon:hover {
   display: flex;
   gap: 18px;
   padding: 12px 12px;
@@ -81,3 +86,22 @@
   top: -3px;
 }
 
+@media (max-width:600px){
+
+  .sidebar-container{
+    padding: 0 10px;
+  }
+
+@media (max-width:500px){
+
+  .sidebar-container{
+    display: none;
+    padding: 0 10px;
+  }
+
+}
+
+@media (max-width:400px){
+    
+}
+}
