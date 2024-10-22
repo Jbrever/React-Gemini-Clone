@@ -367,4 +367,8 @@
     .main-container .content-part .after-query .main-content .ai-reply{
         font-size: 14px;
     }
+    .main-container .content-part .before-query{
+        margin-left: -30px;
+        gap: 70px;
+    }
 }
