@@ -41,7 +41,7 @@ export default function geminiContextProvider(probs){
         let isNumber = rawData[i].slice(0,1);
           if(i % 2 == 1){
             if(Number(isNumber) == isNumber){
-              convertedRawData += `<ul><li><b>${rawData[i].substring(2,rawData.length)}</b></li></ul>`;
+              convertedRawData += `<ul><li>${rawData[i].substring(0,2)}<b>${rawData[i].substring(2,rawData.length)}</b></li></ul>`;
             }else{
               convertedRawData += `<b>${rawData[i]}</b>`;
             }
@@ -50,41 +50,28 @@ export default function geminiContextProvider(probs){
       }
       
       // '.' for new line \n
-      rawData = convertedRawData.split('*').join("</br>").split('.');
+      console.log(rawData);
+      rawData = convertedRawData.split('\n').join('</br>').split('*').join('');
+      console.log(rawData);
       rawDataLenght = rawData.length;
-      convertedRawData = '';
-      for(let i = 0; i<rawDataLenght; i++){
-        let isNumber = rawData[i].slice(rawData[i].length - 1);
-        if(i % 2 == 0){
-          if(Number(isNumber) == isNumber){
-            convertedRawData += `${rawData[i].substring(0,rawData[i].length - 1)} </br> ${isNumber}.  `
-          }else{
-            convertedRawData += rawData[i] + '.'
-          }
-        }
-        else{
-          if(Number(isNumber) == isNumber){
-            convertedRawData += `</br>${isNumber} ${rawData[i]}.`;
-          }else{
-            convertedRawData += `${rawData[i]}.</br>`;
-          }
-        };
-      }
+      convertedRawData = rawData;
+  
       
-
       // for '```' to create code section
       rawData = convertedRawData.split('```');
       rawDataLenght = rawData.length;
       convertedRawData = '';
+      console.log(rawData);
 
       for(let i = 0; i<rawDataLenght; i++){
           if(i % 2 == 1){
-            convertedRawData += `<div class='code-section-container'><div class="icons"><div class="code-icon">&lt;/&gt;</div><div class="copy-code-btn">copy</div></div><div class='code-section'>${rawData[i]}</div></div>`;
+            let language = rawData[i].split('</br>')[0];
+            let data = rawData[i].split(language).join('');
+            convertedRawData += `<div class='code-section-container'><div class="icons"><div class="code-icon">${language}</div><div class="copy-code-btn">copy</div></div><div class='code-section'>${data}</div></div>`;
           }
           else{
             convertedRawData += rawData[i];
           }
-
           console.log(convertedRawData);
       }
     

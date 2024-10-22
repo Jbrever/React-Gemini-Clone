@@ -128,8 +128,12 @@
 }
 
 .main-container .content-part .after-query .main-content .ai-reply ul li{
-    margin-top: 35px;
-    margin-bottom: 35px;
+    color: rgb(255, 255, 255);
+    list-style: none;
+    font-size: 23px;
+    font-weight:bold;
+    margin-top: 10px;
+    margin-bottom: -60px;
 }
 .main-container .content-part .after-query .main-content .ai-reply ul li b{
     color: rgb(255, 130, 130);
@@ -148,7 +152,7 @@
    flex-direction:column;
    justify-content: space-between;
    overflow-x: auto;
-   margin-bottom: 20px;
+   margin-bottom: -40px;
 }
 
 .main-container .content-part .after-query .main-content .ai-reply .code-section-container .icons{
