@@ -127,6 +127,9 @@
     line-height: 35px;
     font-size: 17px;
 }
+.main-container .content-part .after-query .main-content .ai-reply b{
+    color: rgb(255, 114, 114);
+}
 
 .main-container .content-part .before-query{
     height: 70vh;
@@ -368,7 +371,9 @@
 
 @media (max-width:400px){
     .main-container .content-part .after-query .main-content .ai-reply{
-        font-size: 14px;
+        font-size: 16px;
+    }.main-container .content-part .after-query .main-content{
+         margin-left: -10px; 
     }
     .main-container .content-part .before-query{
         margin-left: -30px;
