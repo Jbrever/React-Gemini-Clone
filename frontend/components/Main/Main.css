@@ -360,6 +360,9 @@
         padding:13px 20px;
         margin: 0 0;
     }
+    .main-container .bottom-part{
+        padding-bottom: 34px;
+    }
 }
 
 
