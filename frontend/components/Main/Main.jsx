@@ -53,7 +53,7 @@ useEffect((e)=>{
 useEffect(()=>{
   if(response != ''){
     let contentPart = document.querySelector(".content-part");
-    let aiReply = document.querySelector(".ai-reply");
+    let mainContain = document.querySelector(".main-content");
 
 
     if(contentScrollingAllowed){
@@ -65,9 +65,10 @@ useEffect(()=>{
       seContentScrollingAllowed(false)
     })
     
-    if(contentPart.scrollHeight <= contentPart.scrollTop  + 750){
-      seContentScrollingAllowed(true)
-    }
+    // console.log(contentPart.scrollHeight);
+    // if(contentPart.scrollHeight <= contentPart.scrollTop  + 750){
+    //   seContentScrollingAllowed(true)
+    // }
   }
 },[response,contentScrollingAllowed])
 
