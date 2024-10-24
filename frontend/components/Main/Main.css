@@ -183,6 +183,10 @@
     padding: 20px 30px;
     overflow-x:auto;
 }
+.main-container .content-part .after-query .main-content .ai-reply .code-section-container .code-section::selection{
+    background-color: rgb(254, 254, 254);
+    color: black;
+}
 .main-container .content-part .before-query{
     height: 70vh;
     display: flex;

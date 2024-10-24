@@ -1,13 +1,49 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import './Sidebar.css'
 import { assets } from "../../src/assets/assets";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faQuestionCircle } from '@fortawesome/free-regular-svg-icons'
 import { faBars, faGear, faHistory, faPlus, faRightFromBracket } from '@fortawesome/free-solid-svg-icons'
-import { geminiContext } from "../../context/GeminiContext";
+import { geminiContext} from "../../context/GeminiContext";
 function Sidebar(){
+  const {setResponse,prevInputValue,onSend,stopSendingResponse} = useContext(geminiContext);
   const [isExtended , setIsExtended] = useState(false);
- 
+
+  
+  // creating history section
+  useEffect(()=>{
+    let history_containerTag = document.querySelector('.history-container');
+    if(isExtended){
+      // first remove all existed tags 
+      if(history_containerTag != null){
+        let historyTag = document.querySelectorAll('.history');
+        historyTag.forEach((tag,i)=>{
+          tag.remove();
+        })
+      }
+      // then create history tags whenever preInputValue update
+      prevInputValue.map((data,index)=>{
+        let historyTag = document.createElement('div');
+        historyTag.classList.add('history')
+        historyTag.setAttribute('value',data);
+        historyTag.addEventListener('click',handleHistoryItem);
+        if(data.length >= 15){
+          historyTag.innerText = data.slice(0,15) + '....';
+        }else{
+          historyTag.innerText = data;
+        }
+        history_containerTag.appendChild(historyTag);
+      })
+      
+    }
+  },[prevInputValue,isExtended]);
+  
+  function handleHistoryItem(e){
+    let recentQuery = e.target.getAttribute('value');
+    onSend(recentQuery);
+    stopSendingResponse(false);
+  }
+  
   return(
         <div className="sidebar-container">
           <div className="part1">
@@ -23,7 +59,28 @@ function Sidebar(){
              </div>
              <div className="recent-section">
                {
-                isExtended ? <p>Recent</p>: null
+                isExtended ? 
+                      <div className="search-history">
+                        <div className="heading">
+                          Recent
+                        </div>
+                          {
+                            prevInputValue.length == 0 ?
+                              <p className="no-history">No History Available</p>
+                              :
+                              <div className="history-container">
+                                {/* {
+                                  prevInputValue.map((data,index)=>{
+                                     return <div onClick={handleHistoryItem} key={index} className={`history ${data}`}>
+                                              {
+                                                data.slice(0,15) + '....'
+                                              }
+                                            </div>
+                                  })
+                                } */}
+                              </div>
+                          }
+                      </div>: null
                }
              </div>  
           </div>

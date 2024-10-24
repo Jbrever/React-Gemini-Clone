@@ -8,7 +8,7 @@ import { assets } from "../../src/assets/assets";
 import { geminiContext } from "../../context/GeminiContext";
 
 function Main(){
-  const {onSend,response,setResponse,inputValue,setInputValue,animationLoader,giminiIconAnimate ,setGiminiIconAnimate,showPauseBtn,stopSendingResponse} = useContext(geminiContext);
+  const {onSend,response,setResponse,inputValue,setInputValue,prevInputValue,animationLoader,giminiIconAnimate ,setGiminiIconAnimate,showPauseBtn,stopSendingResponse} = useContext(geminiContext);
   let [isQueryAsked , setIsQueryAsked ] = useState(false);
   let [showSendIcon,setShowSendIcon] = useState(false);
   // submitQuery state is used to store previous input value to show on user-query section beside user-icon
@@ -33,8 +33,8 @@ const handleOnInputKeyUp = (e)=>{
     if(query) setSubmitedQuery(query);
     else setSubmitedQuery(inputValue)
     setInputValue('');
-    setShowSendIcon(false)
-    stopSendingResponse(false)
+    setShowSendIcon(false);
+    stopSendingResponse(false);
     setResponse('');
   }
 }
@@ -62,6 +62,10 @@ useEffect(()=>{
     }
   
     contentPart.addEventListener('wheel',(e)=>{
+      seContentScrollingAllowed(false)
+    })
+
+    contentPart.addEventListener('touchmove',(e)=>{
       seContentScrollingAllowed(false)
     })
     
