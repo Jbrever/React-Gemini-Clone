@@ -160,10 +160,16 @@
     margin-left: 0;
     z-index: 2;
   }
+
+  .sidebar-wrap .menu-bar-icon:hover{
+    background-color: transparent;
+  }
   .sidebar-wrap .menu-bar-icon.active-menu-bar-mobile{
     color: rgb(12, 12, 12);
-
   }
 
+  .sidebar-container .part1 .plus-icon{
+    padding: 13px 30px;
+  }
 }
 

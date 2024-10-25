@@ -47,14 +47,19 @@ function Sidebar(){
   },[prevInputValue,isExtended]);
 
   function handleMenuBarBtn(e){
-    setIsExtended(pre=>!pre)
+    hideShowSidebarMobile();
+  }
+  
+  // for mobile
+  function hideShowSidebarMobile(){
     document.querySelector('.menu-bar-icon').classList.toggle('active-menu-bar-mobile');
     document.querySelector('.sidebar-container').classList.toggle('active-for-mobile');
-    console.log(document.querySelector('.menu-bar-icon'));
+    setIsExtended(pre=>!pre)
   }
   
   function handleHistoryItem(e){
     let recentQuery = e.target.getAttribute('value');
+    hideShowSidebarMobile();
     onSend(recentQuery);
     setIsQueryAsked(true)
     stopSendingResponse(false);
@@ -62,6 +67,7 @@ function Sidebar(){
   
   function handlePlusNewChatBtn(){
      console.log('hello');
+     hideShowSidebarMobile();
      setIsQueryAsked(false);
      setShowPauseBtn(false);
   }
