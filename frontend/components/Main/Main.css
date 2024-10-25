@@ -402,6 +402,9 @@
 }
 
 @media (max-width:500px){
+    .main-container nav .main-heading{
+        margin-left: 30px;
+    }
     .main-container .content-part .before-query .texts .user-name,.before-query .texts .heading{
         font-size: 10px;
     }

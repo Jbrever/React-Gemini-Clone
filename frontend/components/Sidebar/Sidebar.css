@@ -1,3 +1,25 @@
+
+.sidebar-wrap .menu-bar-icon{
+  width: 40px;
+  height: 40px;
+  font-size: 20px;
+  border-radius: 50%;
+  cursor:pointer;
+  margin-top: 0px;
+  margin-left: 40px;
+  position: fixed;
+  top: 25px;
+  left: -22px;
+}
+
+.sidebar-wrap .menu-bar-icon:active{
+  transform: scale(0.96);
+}
+
+.sidebar-wrap .menu-bar-icon:hover{
+  background-color: rgb(221,227,234);
+}
+
 .sidebar-container{
     padding: 0 16px;
     min-height: 100vh;
@@ -7,35 +29,16 @@
     justify-content: space-between;
     align-items: center;
 }
-
-.sidebar-container .part1{
-    margin-top: 20px;
-}
-
-.sidebar-container .part1 .menu-bar-icon {
-  width: 40px;
-  height: 40px;
-  font-size: 20px;
-  border-radius: 50%;
-  cursor:pointer;
-
-}
-
-.sidebar-container .part1 .menu-bar-icon:active{
-  transform: scale(0.96);
-}
-
-.sidebar-container .part1 .menu-bar-icon:hover{
-  background-color: rgb(221,227,234);
-}
-
-
-.sidebar-container .part1 .menu-bar-icon ,.part1 .plus-icon {
+.sidebar-wrap .menu-bar-icon ,.sidebar-container .part1 .plus-icon {
   display: flex;
   align-items: center;
   justify-content: center;
   cursor:pointer;
 }
+.sidebar-container .part1{
+  margin-top: 20px;
+}
+
 .sidebar-container .part1 .plus-icon{
   margin-top: 48px;
   font-size: 17px;
@@ -45,6 +48,10 @@
   gap: 20px;
   padding: 13px 15px;
   border-radius: 50px;
+  margin-top: 100px;
+}
+.sidebar-container .part1 .plus-icon:active{
+  transform: scale(0.95);
 }
 .sidebar-container .part1 .plus-icon p{
   font-size: 15px;
@@ -127,11 +134,6 @@
   top: -3px;
 }
 
-@media (max-width:600px){
-
-  .sidebar-container{
-    padding: 0 10px;
-  }
 
 @media (max-width:500px){
 
@@ -139,10 +141,29 @@
     display: none;
     padding: 0 10px;
   }
+  .sidebar-container.active-for-mobile{
+    display: flex;
+    position: fixed;
+    z-index: 1;
+  }
+  .sidebar-container.active-for-mobile .part2 {
+     position: relative;
+     bottom:25px;
+     padding: 0px 10px 0 0; 
+  }
+  .sidebar-wrap .menu-bar-icon{
+    position: absolute;
+    top: 22px;
+    left: 5px;
+    color: rgb(255, 255, 255);
+    margin-top: 0;
+    margin-left: 0;
+    z-index: 2;
+  }
+  .sidebar-wrap .menu-bar-icon.active-menu-bar-mobile{
+    color: rgb(12, 12, 12);
+
+  }
 
 }
 
-@media (max-width:400px){
-    
-}
-}

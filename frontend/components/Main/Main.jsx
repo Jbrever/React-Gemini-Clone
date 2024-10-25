@@ -8,8 +8,21 @@ import { assets } from "../../src/assets/assets";
 import { geminiContext } from "../../context/GeminiContext";
 
 function Main(){
-  const {onSend,response,setResponse,inputValue,setInputValue,prevInputValue,animationLoader,giminiIconAnimate ,setGiminiIconAnimate,showPauseBtn,stopSendingResponse} = useContext(geminiContext);
-  let [isQueryAsked , setIsQueryAsked ] = useState(false);
+  const {onSend,
+         response,
+         setResponse,
+         inputValue,
+         setInputValue,
+         prevInputValue,
+         animationLoader,
+         giminiIconAnimate,
+         setGiminiIconAnimate,
+         isQueryAsked,
+         setIsQueryAsked,
+         showPauseBtn,
+         stopSendingResponse,
+        } = useContext(geminiContext);
+  // let [isQueryAsked , setIsQueryAsked ] = useState(false);
   let [showSendIcon,setShowSendIcon] = useState(false);
   // submitQuery state is used to store previous input value to show on user-query section beside user-icon
   let [submitedQuery , setSubmitedQuery] = useState('');
@@ -27,8 +40,9 @@ const handleOnInputKeyUp = (e)=>{
   }
   // above code for asked query by cards at landing page
   if(typeof(e) == 'string' || e._reactName == 'onClick' || ( e._reactName == 'onKeyUp' &&  e.key == "Enter")){
-    setIsQueryAsked(true)
-    setGiminiIconAnimate(true)
+    console.log(query);
+    setIsQueryAsked(true);
+    setGiminiIconAnimate(true);
     onSend(query);
     if(query) setSubmitedQuery(query);
     else setSubmitedQuery(inputValue)
@@ -44,27 +58,29 @@ useEffect((e)=>{
   let cards = document.querySelectorAll('.card');
   cards.forEach((card)=>{
     card.addEventListener('click',(e)=>{
+    console.log('kkk');
     handleOnInputKeyUp(e.target.innerText);
       setIsQueryAsked(true);
     })
   })
-},[])
+},[isQueryAsked]);
 // for page scrolling when response adding in content-part
 useEffect(()=>{
   if(response != ''){
     let contentPart = document.querySelector(".content-part");
     let mainContain = document.querySelector(".main-content");
 
-
+    // auto scrolling
     if(contentScrollingAllowed){
       let pageHeight = contentPart.scrollHeight;
       contentPart.scrollTop = pageHeight;
     }
-  
+    // for stop auto scrolling in desktop
     contentPart.addEventListener('wheel',(e)=>{
       seContentScrollingAllowed(false)
     })
-
+    
+    // for stop auto scrolling in mobile
     contentPart.addEventListener('touchmove',(e)=>{
       seContentScrollingAllowed(false)
     })

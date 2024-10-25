@@ -6,7 +6,15 @@ import {faQuestionCircle } from '@fortawesome/free-regular-svg-icons'
 import { faBars, faGear, faHistory, faPlus, faRightFromBracket } from '@fortawesome/free-solid-svg-icons'
 import { geminiContext} from "../../context/GeminiContext";
 function Sidebar(){
-  const {setResponse,prevInputValue,onSend,stopSendingResponse} = useContext(geminiContext);
+  const {
+         onSend,
+         setResponse,
+         prevInputValue,
+         stopSendingResponse,
+         setIsQueryAsked,
+         setShowPauseBtn,
+        } = useContext(geminiContext);
+
   const [isExtended , setIsExtended] = useState(false);
 
   
@@ -37,20 +45,36 @@ function Sidebar(){
       
     }
   },[prevInputValue,isExtended]);
+
+  function handleMenuBarBtn(e){
+    setIsExtended(pre=>!pre)
+    document.querySelector('.menu-bar-icon').classList.toggle('active-menu-bar-mobile');
+    document.querySelector('.sidebar-container').classList.toggle('active-for-mobile');
+    console.log(document.querySelector('.menu-bar-icon'));
+  }
   
   function handleHistoryItem(e){
     let recentQuery = e.target.getAttribute('value');
     onSend(recentQuery);
+    setIsQueryAsked(true)
     stopSendingResponse(false);
   }
   
+  function handlePlusNewChatBtn(){
+     console.log('hello');
+     setIsQueryAsked(false);
+     setShowPauseBtn(false);
+  }
+
+
   return(
-        <div className="sidebar-container">
-          <div className="part1">
-             <div className="menu-bar-icon" onClick={()=>setIsExtended(pre=>!pre)}>
+      <div className="sidebar-wrap">
+             <div className="menu-bar-icon" onClick={handleMenuBarBtn}>
                <FontAwesomeIcon icon={faBars}/>
              </div>
-             <div className="plus-icon">
+        <div className="sidebar-container">
+          <div className="part1">
+             <div className="plus-icon" onClick={handlePlusNewChatBtn}>
                <FontAwesomeIcon icon={faPlus}/>
                {
                 isExtended ? 
@@ -111,6 +135,7 @@ function Sidebar(){
              </div>
           </div>
         </div>
+      </div>  
     )
 }
 

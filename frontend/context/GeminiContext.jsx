@@ -8,9 +8,10 @@ export const geminiContext = createContext();
 export default function geminiContextProvider(probs){
     const [response , setResponse] = useState("");
     const [animationLoader, setAnimationLoader] = useState(false);
+    const [giminiIconAnimate , setGiminiIconAnimate ] =useState(false);
     const [inputValue , setInputValue] = useState('');
     const [prevInputValue , setPrevInputValue] = useState([]);
-    const [giminiIconAnimate , setGiminiIconAnimate ] =useState(false);
+    const [isQueryAsked , setIsQueryAsked ] = useState(false);
     const [showPauseBtn , setShowPauseBtn] = useState(false);
     const stopSendingResponseRef = useRef(false);
     const setTimeOutIDsRef = useRef([]); 
@@ -31,14 +32,20 @@ export default function geminiContextProvider(probs){
       stopSendingResponse(true);
       setAnimationLoader(true);
       let result = undefined;
-      if(inputValue != ''){
-        result = await runChat(inputValue);
-        setPrevInputValue(prev=>[...prev,inputValue]);
-      }else{
-        result = await runChat(query);
-        setPrevInputValue(prev=>[...prev,query]);
+      try{
+         if(inputValue != ''){
+           result = await runChat(inputValue);
+           setPrevInputValue(prev=>[...prev,inputValue]);
+         }else{
+           result = await runChat(query);
+           setPrevInputValue(prev=>[...prev,query]);
+         }
+      }catch(err){
+        console.log(err);
+        setAnimationLoader(false);
+        setGiminiIconAnimate(false);
+        setResponse('It\'s restricted content , Feel free to Ask Another things :) </br> Thanks!')
       }
-     
       // '**' for bold text
       let rawData = result.split('**');
       let rawDataLenght = rawData.length;
@@ -101,7 +108,8 @@ export default function geminiContextProvider(probs){
       setTimeOutIDsRef.current.push(id);
       setShowPauseBtn(true);
     }  
-
+    
+    // stop Gemini Icon animation
     setGiminiIconAnimate(false);
   }
 
@@ -123,7 +131,21 @@ export default function geminiContextProvider(probs){
   }
 
 return(
-    <geminiContext.Provider value={{onSend,response,setResponse,animationLoader,inputValue,setInputValue,prevInputValue,giminiIconAnimate,setGiminiIconAnimate,showPauseBtn,stopSendingResponse}}>
+    <geminiContext.Provider value={{onSend,
+                                    response,
+                                    setResponse,
+                                    animationLoader,
+                                    giminiIconAnimate,
+                                    setGiminiIconAnimate,
+                                    inputValue,
+                                    setInputValue,
+                                    prevInputValue,
+                                    isQueryAsked,
+                                    setIsQueryAsked,
+                                    showPauseBtn,
+                                    setShowPauseBtn,
+                                    stopSendingResponse,
+                                    }}>
            {probs.children}
     </geminiContext.Provider>
     )
